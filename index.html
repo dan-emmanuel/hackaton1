@@ -36,10 +36,13 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-light" ><i class="fas fa-user"></i></span>
                                 <input type="text" class="form-control " id="inputPlayerName1" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                <div class="invalid-feedback">
+                                    please feed the player name
+                                </div>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text bg-light" ><i class="fas fa-heart"></i></span>
-                                <input id ="inputLifeNumber" type="number" class="form-control" placeholder="Number of life" aria-label="lifeNumber" aria-describedby="basic-addon1">
+                                <input id ="inputLifeNumber" type="number" value ="3" class="form-control" placeholder="Number of life" aria-label="lifeNumber" aria-describedby="basic-addon1">
                             </div>
                               
                         </div>
@@ -101,6 +104,7 @@
                         <div class="input-group ">
                             <span class="input-group-text bg-light" ><i class="fas fa-user"></i></span>
                             <input readonly type="text" class="form-control" id="inputCurrentPlayerName" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            
                         </div>
                         <div class="input-group col-auto justify-content-end">
                             <span class="input-group-text bg-light" ><i class="fas fa-heart"></i></span>

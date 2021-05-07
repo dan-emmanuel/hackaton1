@@ -111,7 +111,7 @@ function startGame(event){
     }
 
     if(!allowToContinue){
-
+        event.preventDefault()
     }else{
 
     }
