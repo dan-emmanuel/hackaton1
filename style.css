@@ -1,6 +1,6 @@
-html{
+main{
     background-image: url(820080_blocks-rainbow-3d-graphics-backgrounds_6000x4000_h.jpeg);
-    height: 100%;
+    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
