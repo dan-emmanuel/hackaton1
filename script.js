@@ -123,7 +123,8 @@ function startGame(event){
         break;
         case "duel":
             inputCurrentPlayerName.value = player1.name = inputPlayerName1.value
-            player1.name = inputPlayerName2.value
+            player2.name = inputPlayerName2.value
+            player2.type = "human"
             required = [inputPlayerName1,inputPlayerName2]
             addClass(buttonStartSequence,"d-none")
         break;
@@ -145,8 +146,6 @@ function startGame(event){
 
     if(!allowToContinue){
         event.preventDefault()
-    }else{
-        
     }
 }
 
