@@ -203,6 +203,9 @@ function playTheSequence(){
     setTimeout(() => {
         let otherPlayer = currentPlayer==player1?player2:player1
         let sequenceToPlay = gameMode=="solo" ?currentPlayer.generatedSequence:otherPlayer.generatedSequence
+        if(gameMode=="solo"){
+            otherPlayer.playedSequence = []
+        }
 
         for (let index = 0; index < sequenceToPlay.length; index++) {
             const element = sequenceToPlay[index];
