@@ -373,6 +373,7 @@ function checkSequence() {
             
         }, 1000);
         if(gameMode=="solo"){
+            
             if(arraysMatch(currentPlayer.playedSequence,otherPlayer.generatedSequence)){
                 player1.generatedSequence = []
                 player1.playedSequence = []
@@ -398,6 +399,11 @@ function checkSequence() {
                 
                 if(player1.lifes>0){
                 setTimeout(() => {
+                    player1.generatedSequence = []
+                    player1.playedSequence = []
+                    player2.generatedSequence = []
+                    player2.playedSequence = []
+
                     modalMessage.hide()
                 }, 1000);}
             }
