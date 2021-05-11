@@ -203,6 +203,9 @@ function playTheSequence(){
     setTimeout(() => {
         let otherPlayer = currentPlayer==player1?player2:player1
         let sequenceToPlay = gameMode=="solo" ?currentPlayer.generatedSequence:otherPlayer.generatedSequence
+        if(gameMode=="solo"){
+            otherPlayer.playedSequence = []
+        }
 
         for (let index = 0; index < sequenceToPlay.length; index++) {
             const element = sequenceToPlay[index];
@@ -373,7 +376,6 @@ function checkSequence() {
             
         }, 1000);
         if(gameMode=="solo"){
-            
             if(arraysMatch(currentPlayer.playedSequence,otherPlayer.generatedSequence)){
                 player1.generatedSequence = []
                 player1.playedSequence = []
@@ -399,11 +401,6 @@ function checkSequence() {
                 
                 if(player1.lifes>0){
                 setTimeout(() => {
-                    player1.generatedSequence = []
-                    player1.playedSequence = []
-                    player2.generatedSequence = []
-                    player2.playedSequence = []
-
                     modalMessage.hide()
                 }, 1000);}
             }
