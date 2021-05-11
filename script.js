@@ -105,6 +105,8 @@ function launchChrono(message){
             divModalMessageContent.innerHTML = message;
             clearInterval(timerInterval)
             setTimeout(() => {
+                console.log(1)
+
                 modalMessage.hide()
             }, 500);
 
@@ -198,13 +200,14 @@ function startGame(event){
 
 
 function playTheSequence(){
+    console.log("laaaaaaaaaaaa")
     launchChrono("top")
     currentPhase = "onplay"
     setTimeout(() => {
         let otherPlayer = currentPlayer==player1?player2:player1
         let sequenceToPlay = gameMode=="solo" ?currentPlayer.generatedSequence:otherPlayer.generatedSequence
         if(gameMode=="solo"){
-            currentPlayer.playedSequence = []
+            player1.playedSequence = []
         }
 
         for (let index = 0; index < sequenceToPlay.length; index++) {
@@ -225,6 +228,7 @@ function playTheSequence(){
             divModalMessageContent.innerHTML  = `Now it's your turn ${currentPlayer.name}`
             modalMessage.show()
             setTimeout(() => {
+
                 modalMessage.hide()
                 currentPlayer = currentPlayer==player1?player2:player1 
                 currentPhase = "redoTheSequence"
@@ -284,6 +288,8 @@ function    listenSequence(event){
         
                                 }, 1000);
                                 setTimeout(() => {
+                    console.log(1)
+
                                     modalMessage.hide()
                                     currentPhase="onWait"
                                     disableCases()
@@ -325,6 +331,8 @@ function    listenSequence(event){
                         }, 1000);
 
                         setTimeout(() => {
+                    console.log(1)
+
                             modalMessage.hide()
                             currentPhase = "redoTheSequence"
 
@@ -369,14 +377,18 @@ function checkSequence() {
 
 
     
-        divModalMessageContent.innerHTML  = `Good Job next level `
-        modalMessage.show()
-        setTimeout(() => {
-            modalMessage.hide()
-            
-        }, 1000);
+       
         if(gameMode=="solo"){
+            divModalMessageContent.innerHTML  = `Good Job next level `
+            modalMessage.show()
+          
             if(arraysMatch(currentPlayer.playedSequence,otherPlayer.generatedSequence)){
+                setTimeout(() => {
+                    console.log(1)
+        
+                    modalMessage.hide()
+                    
+                }, 1000);
                 player1.generatedSequence = []
                 player1.playedSequence = []
                 player2.generatedSequence = []
@@ -390,19 +402,25 @@ function checkSequence() {
                 removeClass(buttonStartSequence,"d-none")
             }else{
                 player2.sequenceGenerator()
-                currentPhase="onWait"
-                disableCases()
-                removeClass(buttonStartSequence,"d-none")
+               
                 player1.lifes--
                 divModalMessageContent.innerHTML  =player1.lifes==0? `you lost, last level reached : ${currentLevel}`:`you made at leat one mistake, you lose a life, try again`
     
                 inputRemainingLife.value = player1.lifes
                 modalMessage.show()
-                
                 if(player1.lifes>0){
+                 
                 setTimeout(() => {
+                    
+
                     modalMessage.hide()
-                }, 1000);}
+                }, 1000);}else{
+                    currentPhase="onWait"
+                    disableCases()
+                    removeClass(buttonStartSequence,"d-none")
+                    return false
+
+                }
             }
         }else{
             let otherWon = arraysMatch(currentPlayer.generatedSequence,otherPlayer.playedSequence)
@@ -425,6 +443,7 @@ function checkSequence() {
 
                 modalMessage.show()
                 setTimeout(() => {
+                    console.log(1)
                     modalMessage.hide()
                 }, 1000);
                 currentLevel++
@@ -436,6 +455,8 @@ function checkSequence() {
 
                 modalMessage.show()
                 setTimeout(() => {
+                    console.log(1)
+
                     modalMessage.hide()
                 }, 1000);
             }else{
@@ -444,7 +465,8 @@ function checkSequence() {
                 divModalMessageContent.innerHTML  = `and the winer is  ${otherWon?otherPlayer.name:currentPlayer.name}`
 
                 modalMessage.show()
-                
+                return false
+
             }
 
 
