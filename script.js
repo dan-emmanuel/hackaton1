@@ -257,6 +257,7 @@ function    listenSequence(event){
                         if(currentPlayer.playedSequence.length==currentLevel){
                             currentPhase = "checkSequence"
                             setTimeout(() => {
+                                unlightAcube(event)
                                 checkSequence()
                             }, 200);
                         }
@@ -410,14 +411,14 @@ function checkSequence() {
                 modalMessage.show()
                 if(player1.lifes>0){
                  
-                setTimeout(() => {
-                    
+                    setTimeout(() => {
+                        modalMessage.hide()
+                        removeClass(buttonStartSequence,"d-none")
 
-                    modalMessage.hide()
-                }, 1000);}else{
+                    }, 1000);
+                }else{
                     currentPhase="onWait"
                     disableCases()
-                    removeClass(buttonStartSequence,"d-none")
                     return false
 
                 }
